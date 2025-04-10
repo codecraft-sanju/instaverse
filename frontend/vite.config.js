@@ -5,13 +5,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': {
-        target: 'https://instaverse-i93f.onrender.com',
-        // target:"https://instaverse-beru.onrender.com"
-      },
-    },
+      "/api": {
+        target:"http://localhost:5000"
+      }
+    }
   },
   build: {
-    chunkSizeWarningLimit: 2000,
-  },
-});
+    chunkSizeWarningLimit: 2000
+  }
+})
