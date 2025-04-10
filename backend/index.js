@@ -8,6 +8,7 @@ import storyRoute from './routes/storyRoutes.js';
 import postRoute from './routes/postRoutes.js';
 import followRoute from './routes/followRoutes.js';
 import CommentRoute from './routes/commentRoutes.js';
+import path from "path";
 
 
 dotenv.config();
@@ -32,7 +33,13 @@ app.use('/api', userRoute);
 app.use('/api/stories', storyRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/follow', followRoute);
-app.use('/api/comments',CommentRoute)
+app.use('/api/comments', CommentRoute);
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname,"frontend","dist","index.html"))
+})
 
 // Server
 app.listen(PORT, () => {
