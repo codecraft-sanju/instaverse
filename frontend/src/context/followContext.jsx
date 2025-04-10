@@ -4,7 +4,7 @@ import { useUser } from './UserContext';
 
 const FollowContext = createContext();
 
-const API = import.meta.env.VITE_API_URL + '/api';
+
 
 export const FollowProvider = ({ children }) => {
   const { user, fetchUser, fetchAllUsers } = useUser();
@@ -21,7 +21,7 @@ export const FollowProvider = ({ children }) => {
   const followUser = async (userId) => {
     try {
       setFollowLoading(true);
-      await axios.post(`${API}/follow/follow/${userId}`, {}, { withCredentials: true });
+      await axios.post(`/follow/follow/${userId}`, {}, { withCredentials: true });
       await fetchUser();
       await fetchAllUsers();
     } catch (error) {
@@ -35,7 +35,7 @@ export const FollowProvider = ({ children }) => {
   const unfollowUser = async (userId) => {
     try {
       setFollowLoading(true);
-      await axios.delete(`${API}/follow/unfollow/${userId}`, { withCredentials: true });
+      await axios.delete(`/follow/unfollow/${userId}`, { withCredentials: true });
       await fetchUser();
       await fetchAllUsers();
     } catch (error) {
@@ -49,7 +49,7 @@ export const FollowProvider = ({ children }) => {
   const getfollowers = async (userId) => {
     setFollowLoading(true);
     try {
-      const { data } = await axios.get(`${API}/follow/all/${userId}`, {
+      const { data } = await axios.get(`/follow/all/${userId}`, {
         withCredentials: true,
       });
 

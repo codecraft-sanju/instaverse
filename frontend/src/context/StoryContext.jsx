@@ -39,7 +39,8 @@ export const StoryProvider = ({ children }) => {
       const { data } = await axios.get("/api/stories");
       setStories(data.stories);
     } catch (error) {
-     // toast.error("Failed to fetch stories");
+      // toast.error("Failed to fetch stories");
+      console.log(error.message)
     } finally {
       setStoryLoading(false);
     }

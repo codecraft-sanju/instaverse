@@ -19,12 +19,7 @@ console.log(` Running in ${process.env.NODE_ENV} mode`);
 
 // Middlewares
 
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true, // Allow cookies
-  }),
-);
+app.use(cors());
 app.use(express.json());
 app.use(cookieparser());
 
