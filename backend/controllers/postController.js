@@ -81,7 +81,7 @@ export const getUserPosts = async (req, res) => {
   }
 };
 
-// Delete a post
+// Delete  post
 export const deletePost = async (req, res) => {
   try {
     const { postId } = req.params;
