@@ -10,7 +10,7 @@ import { isAuth } from '../middlewares/isAuth.js';
 
 const router = express.Router();
 
-// Follow a user
+// Follow a   user
 router.post('/follow/:id', isAuth, followUser);
 
 // Unfollow a user
